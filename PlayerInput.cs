@@ -1,10 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-
     private Vector3[] position = new Vector3[2];
     private Vector3 leftPos;
     private Vector3 rightPos;
@@ -15,7 +14,15 @@ public class PlayerInput : MonoBehaviour
         instance = this;
     }
 
-    public Vector3[] handPosition()
+    public static PlayerInput Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
+    public Vector3[] handPosition() // Returns an array of vector 3 representing the left hand position and the right hand position
     {
         KinectManager kinectManager = KinectManager.Instance;
 
@@ -42,15 +49,7 @@ public class PlayerInput : MonoBehaviour
         return position;
     }
 
-    public static PlayerInput Instance
-    {
-        get
-        {
-            return instance;
-        }
-    }
-
-    public bool IsLeftHandUp()
+    public bool IsLeftHandUp() //Returns true if left hand is up
     {
         KinectManager kinectManager = KinectManager.Instance;
 
@@ -67,7 +66,7 @@ public class PlayerInput : MonoBehaviour
         return false;
     }
 
-    public bool IsRightHandUp()
+    public bool IsRightHandUp()//Returns true if right hand is up
     {
         KinectManager kinectManager = KinectManager.Instance;
 
@@ -83,5 +82,4 @@ public class PlayerInput : MonoBehaviour
         }
         return false;
     }
-
 }
